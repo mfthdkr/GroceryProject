@@ -1,0 +1,31 @@
+﻿@model List<GroceryProject.Dal.Entities.Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<br/>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Kategori Id</th>
+        <th>Kategori Adı</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryId</td>
+            <td>@item.CategoryName</td>
+            <td>
+                <a href="#" class="btn btn-danger">Sil</a>
+                <a href="#" class="btn btn-success">Güncelle</a>
+            </td>
+        </tr>
+
+    }
+    </tbody>
+</table>
+<br/>
+<a href="#" class="btn btn-info">Yeni Kategori</a>
