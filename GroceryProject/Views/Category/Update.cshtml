@@ -1,0 +1,23 @@
+﻿@model GroceryProject.Dal.Entities.Category
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<br/>
+
+@using (Html.BeginForm("Update", "Category", FormMethod.Post))
+{
+    <b>Kategori Id</b>
+    @Html.TextBoxFor(p=>p.CategoryId,new {@class= "form-control"})
+
+    <br/>
+    <b>Kategori Adı</b>
+    @Html.TextBoxFor(p=>p.CategoryName,new{@class="form-control"})
+    <br/>
+    <b>Açıklama</b>
+    @Html.TextBoxFor(p=>p.Description,new{@class="form-control"})
+    <br/>
+    <button class="btn-primary">Güncelle</button>
+}
+

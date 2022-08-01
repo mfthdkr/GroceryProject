@@ -25,13 +25,13 @@
             <td>@item.Price</td>
             <td>@item.Stock</td>
             <td>
-                <a href="#" class="btn btn-danger">Sil</a>
-                <a href="#" class="btn btn-success">Güncelle</a>
+                <a href="@Url.Action("Delete","Item",new {itemId=@item.Id})" class="btn btn-danger">Sil</a>
+                <a href="@Url.Action("Update","Item",new {itemId=@item.Id})" class="btn btn-success">Güncelle</a>
             </td>
         </tr>
     }
     </tbody>
 </table>
 <br/>
-<a href="#" class="btn btn-info">Yeni Ürün</a>
+<a href="@Url.Action("Create")" class="btn btn-info">Yeni Ürün</a>
 

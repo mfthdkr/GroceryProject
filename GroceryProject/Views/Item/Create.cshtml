@@ -1,0 +1,31 @@
+﻿@model GroceryProject.Dal.Entities.Item
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<br/>
+@using (Html.BeginForm("Create", "Item",FormMethod.Post))
+{
+    @Html.LabelFor(p=>p.Name,"Ürün Adı")
+    @Html.TextBoxFor(p=>p.Name,new {@class="form-control"})
+    <br/>
+    @Html.LabelFor(p=>p.Price,"Fiyat")
+    @Html.TextBoxFor(p=>p.Price,new {@class="form-control"})
+    <br/>
+    @Html.LabelFor(p=>p.Stock,"Stok")
+    @Html.TextBoxFor(p=>p.Stock,new {@class="form-control"})
+    <br/>
+    @Html.LabelFor(p=>p.Description,"Açıklama")
+    @Html.TextBoxFor(p=>p.Description,new {@class="form-control"})
+    <br/>
+    @Html.LabelFor(p=>p.ImageUrl,"Resim Yolu")
+    @Html.TextBoxFor(p=>p.ImageUrl,new {@class="form-control"})
+    <br/>
+    @Html.LabelFor(p=>p.Category,"Kategori")
+    @Html.DropDownListFor(p=>p.CategoryId,(List<SelectListItem>) ViewBag.CategoryList, new {@class="form-control"})
+    <br/>
+    <button class="btn btn-info">Kaydet</button>
+}
+
+

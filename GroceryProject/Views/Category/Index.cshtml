@@ -10,6 +10,7 @@
     <tr>
         <th>Kategori Id</th>
         <th>Kategori Adı</th>
+        <th>Açıklama</th>
     </tr>
     </thead>
     <tbody>
@@ -18,9 +19,10 @@
         <tr>
             <td>@item.CategoryId</td>
             <td>@item.CategoryName</td>
+            <td>@item.Description</td>
             <td>
-                <a href="#" class="btn btn-danger">Sil</a>
-                <a href="#" class="btn btn-success">Güncelle</a>
+                <a href="@Url.Action("Delete","Category",new {categoryId=@item.CategoryId})" class="btn btn-danger">Sil</a>
+                <a href="@Url.Action("Update","Category",new {categoryId=@item.CategoryId})" class="btn btn-success">Güncelle</a>
             </td>
         </tr>
 
@@ -28,4 +30,4 @@
     </tbody>
 </table>
 <br/>
-<a href="#" class="btn btn-info">Yeni Kategori</a>
+<a href="@Url.Action("Create")" class="btn btn-info">Yeni Kategori</a>
