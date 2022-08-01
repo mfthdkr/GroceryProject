@@ -1,4 +1,6 @@
-﻿@model List<GroceryProject.Dal.Entities.Item>
+﻿@using X.PagedList.Mvc.Core
+@using X.PagedList
+@model X.PagedList.IPagedList<GroceryProject.Dal.Entities.Item>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
@@ -32,6 +34,7 @@
     }
     </tbody>
 </table>
+@Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new {page}))
 <br/>
 <a href="@Url.Action("Create")" class="btn btn-info">Yeni Ürün</a>
 

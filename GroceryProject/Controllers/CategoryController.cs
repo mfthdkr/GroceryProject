@@ -38,11 +38,12 @@ namespace GroceryProject.Controllers
         [HttpPost]
         public IActionResult Update(Category category)
         {
-            var entity = categoryRepository.Get(category.CategoryId);
-            entity.CategoryName= category.CategoryName;
-            entity.Description = category.Description;
-            entity.Status = true;
-            categoryRepository.Update(entity);
+            //var entity = categoryRepository.Get(category.CategoryId);
+            //entity.CategoryName= category.CategoryName;
+            //entity.Description = category.Description;
+            //entity.Status = true;
+            category.Status = true;
+            categoryRepository.Update(category);
             
             return RedirectToAction("Index");
         }

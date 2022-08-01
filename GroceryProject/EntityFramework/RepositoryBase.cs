@@ -13,6 +13,7 @@ namespace GroceryProject.EntityFramework
         {
             return groceryContext.Set<TEntity>().Find(entityId);
         }
+        
         public List<TEntity> GetList()
         {
             return groceryContext.Set<TEntity>().ToList();
