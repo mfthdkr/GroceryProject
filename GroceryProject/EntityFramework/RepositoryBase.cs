@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection.Metadata.Ecma335;
 using GroceryProject.Dal;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +24,11 @@ namespace GroceryProject.EntityFramework
         public List<TEntity> GetList(string entityToInclude)
         {
             return groceryContext.Set<TEntity>().Include(entityToInclude).ToList();
+        }
+
+        public List<TEntity> GetList(Expression<Func<TEntity, bool>> filter)
+        {
+            return  groceryContext.Set<TEntity>().Where(filter).ToList();
         }
         public void Add(TEntity tEntity)
         {

@@ -14,7 +14,8 @@ namespace GroceryProject.Controllers
         ItemRepository itemRepository = new ItemRepository();
         CategoryRepository categoryRepository = new CategoryRepository();
         public IActionResult Index(int page= 1)
-        {   
+        {
+           
             return View(itemRepository.GetList("Category").ToPagedList(page,3));
         }
 

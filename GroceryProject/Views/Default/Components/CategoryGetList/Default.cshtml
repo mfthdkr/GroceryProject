@@ -1,0 +1,9 @@
+﻿@model List<GroceryProject.Dal.Entities.Category>
+<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+    <ul class="nav navbar-nav nav_1">
+        @foreach (var item in Model)
+        {
+            <li><a href="@Url.Action("CategoryDetails","Default",new {id=@item.CategoryId})">@item.CategoryName</a></li>
+        }
+    </ul>
+</div>

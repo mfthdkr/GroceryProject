@@ -5,6 +5,13 @@
 }
 
 <br/>
+@using (Html.BeginForm())
+{
+    <p>
+        Kategori Adı  :@Html.TextBox("key")
+        <input type="submit" value="Bul"/>
+    </p>
+}
 <table class="table table-bordered">
     <thead>
     <tr>

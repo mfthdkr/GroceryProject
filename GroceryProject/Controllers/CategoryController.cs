@@ -12,8 +12,12 @@ namespace GroceryProject.Controllers
     public class CategoryController : Controller
     {
         CategoryRepository categoryRepository = new CategoryRepository();
-        public IActionResult Index()
-        {   
+        public IActionResult Index(string key)
+        {
+            if (!string.IsNullOrEmpty(key))
+            {
+                return View(categoryRepository.GetList().Where(p=>p.CategoryName.Contains(key)).ToList());
+            }
             return View(categoryRepository.GetList().Where(p=>p.Status==true).ToList());
         }
 
