@@ -13,5 +13,6 @@ namespace GroceryProject.Dal
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Item> Items { get; set; }
+        public DbSet<Admin> Admins { get; set; }
     }
 }

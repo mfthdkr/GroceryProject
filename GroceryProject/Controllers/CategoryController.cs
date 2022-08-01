@@ -2,14 +2,16 @@
 using System.Runtime.InteropServices.WindowsRuntime;
 using GroceryProject.Dal.Entities;
 using GroceryProject.EntityFramework;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GroceryProject.Controllers
 {
+    [Authorize]
+
     public class CategoryController : Controller
     {
         CategoryRepository categoryRepository = new CategoryRepository();
-
         public IActionResult Index()
         {   
             return View(categoryRepository.GetList().Where(p=>p.Status==true).ToList());
