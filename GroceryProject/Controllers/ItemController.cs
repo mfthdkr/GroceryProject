@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using GroceryProject.Dal.Entities;
 using GroceryProject.EntityFramework;
+using GroceryProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Internal;
@@ -31,8 +34,24 @@ namespace GroceryProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Item item)
-        {
+        public IActionResult Create(ItemModel itemModel)
+        {   
+            Item item = new Item();
+            if (itemModel.ImageUrl != null)
+            {
+                var extension = Path.GetExtension(itemModel.ImageUrl.FileName);
+                var newImageName = Guid.NewGuid() + extension;
+                var location = Path.Combine(Directory.GetCurrentDirectory(), "/wwwroot/Images/",newImageName);
+                var stream = new FileStream(location, FileMode.Create);
+                itemModel.ImageUrl.CopyTo(stream);
+                item.ImageUrl = newImageName;
+            }
+
+            item.Name = itemModel.Name;
+            item.Price = itemModel.Price;
+            item.Stock = itemModel.Stock;
+            item.CategoryId = itemModel.CategoryId;
+            item.Description = itemModel.Description;
             itemRepository.Add(item);
             return RedirectToAction("Index");
         }

@@ -1,12 +1,11 @@
-﻿@model GroceryProject.Dal.Entities.Item
+﻿@model ItemModel
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
 
 <br/>
-@using (Html.BeginForm("Create", "Item",FormMethod.Post))
-{
+<form class="form-group" asp-action="Update" asp-controller="Item" method="post" enctype="multipart/form-data">
     @Html.LabelFor(p=>p.Name,"Ürün Adı")
     @Html.TextBoxFor(p=>p.Name,new {@class="form-control"})
     <br/>
@@ -19,13 +18,13 @@
     @Html.LabelFor(p=>p.Description,"Açıklama")
     @Html.TextBoxFor(p=>p.Description,new {@class="form-control"})
     <br/>
-    @Html.LabelFor(p=>p.ImageUrl,"Resim Yolu")
-    @Html.TextBoxFor(p=>p.ImageUrl,new {@class="form-control"})
+    @Html.LabelFor(p=>p.ImageUrl,"Resim Seçin")
+    <input type="file" name="ImageUrl"/>
     <br/>
     @Html.LabelFor(p=>p.Category,"Kategori")
     @Html.DropDownListFor(p=>p.CategoryId,(List<SelectListItem>) ViewBag.CategoryList, new {@class="form-control"})
     <br/>
     <button class="btn btn-info">Kaydet</button>
-}
+</form>
 
 
